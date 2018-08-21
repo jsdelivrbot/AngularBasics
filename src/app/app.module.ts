@@ -1,34 +1,24 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserModule  } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import './rxjs-extensions';
 
 import { AppComponent } from './app.component';
-import { OtherComponent } from './other/other.component';
-import { AnotherComponent } from './other/another.component';
-import { DatabindingComponent } from './databinding/databinding.component';
-import { PropertyBindingComponent } from './databinding/property-binding.component';
-import { EventBindingComponent } from './databinding/event-binding.component';
-import { FormsModule } from '@angular/forms';
-import { Routes, RouterModule} from '@angular/router';
-
-const routes: Routes = [
-  {},
-  {}
-]
+import { CharacterService } from './characters/character.service';
+import { VehicleService } from './vehicles/vehicle.service';
+import { AppRoutingModule, routableComponents } from './app-routing.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    OtherComponent, 
-    AnotherComponent,
-    DatabindingComponent,
-    PropertyBindingComponent,
-    EventBindingComponent
-  ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpModule,
+    AppRoutingModule
   ],
-  providers: [],
+  declarations: [AppComponent, routableComponents],
+  providers: [CharacterService, VehicleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
